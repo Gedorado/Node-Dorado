@@ -1,8 +1,9 @@
 import express from "express"
 import morgan from "morgan";
 import pkg from '../package.json'
-
+import productsRoutes from './routes/products.routes'
 const app=express()
+
 app.set('pkg',pkg);
 app.use(morgan('dev'));
 app.get('/',(req, res) =>{
@@ -13,5 +14,5 @@ app.get('/',(req, res) =>{
         version: app.get('pkg').version
     })
 })
-
+app.use(productsRoutes)
 export default app;
